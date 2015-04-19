@@ -2,3 +2,4 @@
 
 - name: deploy consul-template configuration
   template: src=consul-template.conf.j2 dest={{consul_template_config_file_path}} owner=root group=root mode=0644 backup=yes
+  notify: restart consul-template

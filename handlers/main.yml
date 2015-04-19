@@ -2,3 +2,7 @@
 
 - name: reload-systemd
   shell: systemctl daemon-reload
+
+- name: restart consul-template
+  service: name=consul-template state=restarted
+  when: consul_template_manage_service

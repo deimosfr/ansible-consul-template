@@ -1,0 +1,9 @@
+#{{ ansible_managed }}
+
+{% for v in consul_template_haproxy_config %}
+{{v.name}}
+    {% for c in v.config %}
+    {{c}}
+    {% endfor %}
+
+{% endfor %}

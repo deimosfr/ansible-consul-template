@@ -1,0 +1,40 @@
+#{{ ansible_managed }}
+
+consul = "{{consul_template_consul_addr}}"
+token = "{{consul_template_token}}"
+retry = "{{consul_template_retry}}"
+max_stale = "{{consul_template_max_stale}}"
+
+{% if consul_template_auth_enable %}
+auth {
+  enabled = true
+  username = "{{consul_template_username}}"
+  password = "{{consul_template_password}}"
+}
+{% endif %}
+
+{% if consul_template_ssl_enable %}
+ssl {
+  enabled = true
+  verify = {{consul_template_ssl_verify}}
+  cert = "{{consul_template_ssl_cert}}"
+  ca_cert = "{{consul_template_ssl_ca_cert}}"
+}
+{% endif %}
+
+{% if consul_template_syslog_enable %}
+syslog {
+  enabled = true
+  facility = "{{consul_template_syslog_facility}}"
+}
+{% endif %}
+
+{% for t in consul_template_config_file %}
+# {{t.name}}
+template {
+  source = "{{t.source}}"
+  destination = "{{t.destination}}"
+  command = "{{t.command}}"
+}
+
+{% endfor %}

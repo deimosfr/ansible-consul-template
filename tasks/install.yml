@@ -1,0 +1,7 @@
+---
+
+- name: install consul template binary
+  copy: src=consul-template dest={{consul_template_bin_path}}/consul-template owner=root group=root mode=0755
+
+- name: create config folder
+  file: path={{consul_template_config_dir}} owner=root group=root mode=0755 state=directory

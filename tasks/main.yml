@@ -1,0 +1,15 @@
+---
+
+- include: install.yml
+  tags: [consul-template]
+
+- include: haproxy.yml
+  when: consul_template_install_haproxy
+  tags: [consul-template, haproxy]
+
+- include: configure.yml
+  tags: [consul-template]
+
+- include: service.yml
+  when: consul_template_manage_service
+  tags: [consul-template]

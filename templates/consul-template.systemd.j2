@@ -1,0 +1,8 @@
+[Unit]
+Description=consul-template
+
+[Service]
+ExecStart={{ consul_template_bin_path }}/consul-template -config={{ consul_template_config_file_path }}
+
+[Install]
+WantedBy=multi-user.target

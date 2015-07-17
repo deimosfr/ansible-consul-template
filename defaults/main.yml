@@ -24,7 +24,10 @@ consul_template_syslog_enable: true
 consul_template_syslog_facility: 'LOCAL5'
 
 consul_template_install_haproxy: true
+consul_template_haproxy_manage_service: true
 consul_template_haproxy_template_dest: '/etc/consul-template/haproxy.cmtpl'
+consul_template_haproxy_map_dest: '/etc/consul-template/haproxy.map'
+consul_template_haproxy_map:
 consul_template_haproxy_config:
   - name: 'global'
     config:

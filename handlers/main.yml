@@ -3,6 +3,10 @@
 - name: reload-systemd
   shell: systemctl daemon-reload
 
+- name: reload haproxy
+  shell: service haproxy reload
+  when: consul_template_haproxy_manage_service
+
 - name: restart consul-template
   service: name=consul-template state=restarted
   when: consul_template_manage_service

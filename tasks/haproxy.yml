@@ -3,6 +3,11 @@
 - name: install haproxy
   apt: name=haproxy state=present update_cache=yes cache_valid_time=3600
 
+- name: configure haproxy map
+  template: src=haproxy.map.j2 dest={{consul_template_haproxy_map_dest}} owner=root group=root mode=0644 backup=yes
+  when: consul_template_haproxy_map
+  notify: reload haproxy
+
 - name: configure haproxy consul template
   template: src=haproxy.cmtpl.j2 dest={{consul_template_haproxy_template_dest}} owner=root group=root mode=0755 backup=yes
   notify: restart consul-template

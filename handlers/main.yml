@@ -10,3 +10,9 @@
 - name: restart consul-template
   service: name=consul-template state=restarted
   when: consul_template_manage_service
+
+- name: remove consul-template archive
+  file:
+    path=/tmp/consul_template_{{consul_template_version}}_{{consul_template_arch}}.zip
+    state=absent
+    force=yes

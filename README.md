@@ -19,6 +19,10 @@ Role Variables
 The variables that can be passed to this role:
 
 ```
+consul_template_version: '0.11.0'
+consul_template_arch: 'linux_amd64'
+consul_template_http_src: "https://github.com/hashicorp/consul-template/releases/download/v{{consul_template_version}}/consul_template_{{consul_template_version}}_{{consul_template_arch}}.zip"
+
 consul_template_bin_path: '/usr/bin'
 consul_template_config_dir: '/etc/consul-template'
 consul_template_config_file_path: '{{consul_template_config_dir}}/consul-template.conf'

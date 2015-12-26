@@ -4,6 +4,7 @@ consul = "{{consul_template_consul_addr}}"
 token = "{{consul_template_token}}"
 retry = "{{consul_template_retry}}"
 max_stale = "{{consul_template_max_stale}}"
+pid_file = "/var/run/consul-template.pid"
 
 {% if consul_template_auth_enable %}
 auth {

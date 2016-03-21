@@ -9,9 +9,10 @@ galaxy_info:
     - name: Debian
       versions:
         - jessie
-  categories:
+  galaxy_tags:
     - cloud
     - clustering
     - networking
     - web
     - system
+dependencies: []
